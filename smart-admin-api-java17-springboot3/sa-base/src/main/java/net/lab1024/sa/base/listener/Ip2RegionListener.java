@@ -28,7 +28,7 @@ public class Ip2RegionListener implements ApplicationListener<ApplicationEnviron
 
     private static final String IP_FILE_NAME = "ip2region.xdb";
 
-    private static final String LOG_DIRECTORY = "project.log-directory";
+    private static final String LOG_DIRECTORY = "user.dir";
 
     @Override
     public void onApplicationEvent(ApplicationEnvironmentPreparedEvent applicationEvent) {

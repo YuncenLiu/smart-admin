@@ -1,9 +1,9 @@
 spring:
   # 数据库连接信息
   datasource:
-    url: jdbc:p6spy:mysql://127.0.0.1:3306/smart_admin_v3?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
-    username: root
-    password: SmartAdmin666
+    url: jdbc:p6spy:mysql://10.10.91.158:3306/smart_admin?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: smart_admin
+    password: smart_admin
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     initial-size: 2
     min-idle: 2
@@ -23,10 +23,10 @@ spring:
   # redis 连接池配置信息
   data:
     redis:
-      database: 1
-      host: 127.0.0.1
-      port: 6379
-      password:
+      database: 15
+      host: 39.105.177.10
+      port: 6389
+      password: 546820.0@lyc
       timeout: 10000ms
       lettuce:
         pool:
@@ -35,12 +35,24 @@ spring:
           max-idle: 3
           max-wait: 30000ms
 
+  # xiang:
+  #  mail:
+  #    accounts:
+  #      array_xiangxiang:
+  #        host: smtp.163.com
+  #        port: 465
+  #        username: array_xiangxiang@163.com
+  #        password: KTSQjWaTA8L9GqGe
+  #        protocol: smtp
+  #        tls: false
+  #        ssl: true
+  #        default-encoding: UTF-8
   # 邮件，置以SSL的方式发送, 这个需要使用这种方式并且端口是465
   mail:
     host: smtp.163.com
     port: 465
-    username: lab1024@163.com
-    password: LAB1024LAB
+    username: array_xiangxiang@163.com
+    password: KTSQjWaTA8L9GqGe
     test-connection: false
     properties:
       mail:
@@ -72,7 +84,7 @@ spring:
 # tomcat 配置，主要用于 配置 访问日志（便于将来排查错误）
 server:
   tomcat:
-    basedir: ${project.log-directory}/tomcat-logs
+    basedir: ${user.dir}/tomcat-logs
     accesslog:
       enabled: true
       max-days: 7

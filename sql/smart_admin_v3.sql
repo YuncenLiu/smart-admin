@@ -6,9 +6,9 @@
 
 
 -- 导出 smart_admin_v3 的数据库结构
-DROP DATABASE IF EXISTS `smart_admin_v3`;
-CREATE DATABASE IF NOT EXISTS `smart_admin_v3` ;
-USE `smart_admin_v3`;
+DROP DATABASE IF EXISTS `smart_admin`;
+CREATE DATABASE IF NOT EXISTS `smart_admin` ;
+USE `smart_admin`;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;

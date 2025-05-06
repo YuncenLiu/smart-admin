@@ -23,3 +23,7 @@ target/
 **/node_modules
 **/.vscode
 
+# 操作系统生成文件
+.DS_Store
+Thumbs.db
+desktop.ini
