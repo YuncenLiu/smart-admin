@@ -1,9 +1,9 @@
 spring:
   # 数据库连接信息
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/smart_admin_v3?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
-    username: root
-    password: SmartAdmin666
+    url: jdbc:mysql://liuyuncen.com:3388/smart_admin?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: smart_admin
+    password: SmartAdmin!23
     driver-class-name: com.mysql.cj.jdbc.Driver
     initial-size: 10
     min-idle: 10
@@ -23,10 +23,10 @@ spring:
   # redis 连接池配置信息
   data:
     redis:
-      database: 1
-      host: 127.0.0.1
-      port: 6379
-      password:
+      database: 14
+      host: 39.105.177.10
+      port: 6389
+      password: 546820.0@lyc
       timeout: 10000ms
       lettuce:
         pool:
@@ -38,8 +38,8 @@ spring:
   mail:
     host: smtp.163.com
     port: 465
-    username: lab1024@163.com
-    password: LAB1024LAB
+    username: array_xiangxiang@163.com
+    password: KTSQjWaTA8L9GqGe
     test-connection: false
     properties:
       mail:
@@ -83,7 +83,7 @@ file:
   storage:
     mode: local
     local:
-      upload-path: /home/smart_admin_v3/upload/   #文件上传目录
+      upload-path: /data/smart_admin/upload/   #文件上传目录
       url-prefix:
     cloud:
       region: oss-cn-hangzhou

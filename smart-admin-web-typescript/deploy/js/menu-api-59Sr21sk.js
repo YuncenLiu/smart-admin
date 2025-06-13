@@ -1,0 +1,1 @@
+import{b as e,p as u}from"./index-CBkxY9s9.js";const n={addMenu:e=>u("/menu/add",e),updateMenu:e=>u("/menu/update",e),batchDeleteMenu:u=>e(`/menu/batchDelete?menuIdList=${u}`),queryMenu:()=>e("/menu/query"),queryMenuTree:u=>e(`/menu/tree?onlyMenu=${u}`),getAuthUrl:()=>e("/menu/auth/url")};export{n as m};

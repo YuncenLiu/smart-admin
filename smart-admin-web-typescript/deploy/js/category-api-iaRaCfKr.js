@@ -1,0 +1,1 @@
+import{p as e,b as t}from"./index-CBkxY9s9.js";const a={addCategory:t=>e("/category/add",t),deleteCategoryById:e=>t(`/category/delete/${e}`),queryCategoryTree:t=>e("/category/tree",t),updateCategory:t=>e("/category/update",t)};export{a as c};

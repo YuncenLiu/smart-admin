@@ -1,0 +1,1 @@
+import{p as e,b as r}from"./index-CBkxY9s9.js";const s={generate:r=>e("/support/serialNumber/generate",r),getAll:()=>r("/support/serialNumber/all"),queryRecord:r=>e("/support/serialNumber/queryRecord",r)};export{s};
