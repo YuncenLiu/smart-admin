@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.lab1024.sa.admin.module.dbinfo.dao.BCounDao">
+
+    <!-- 查询结果列 -->
+    <sql id="base_columns">
+        data_db_count.id,
+        data_db_count.db_info,
+        data_db_count.db_schema,
+        data_db_count.db_user,
+        data_db_count.table_name,
+        data_db_count.table_desc,
+        data_db_count.all_count,
+        data_db_count.delete_count,
+        data_db_count.create_user_id,
+        data_db_count.create_user_name,
+        data_db_count.create_time,
+        data_db_count.update_time
+    </sql>
+
+    <!-- 分页查询 -->
+    <select id="queryPage" resultType="net.lab1024.sa.admin.module.dbinfo.domain.vo.BCounVO">
+        SELECT
+        <include refid="base_columns"/>
+        FROM data_db_count
+        <where>
+            <!--tableName-->
+            <if test="queryForm.tableName != null and queryForm.tableName != ''">
+                AND INSTR(data_db_count.table_name,#{queryForm.tableName})
+            </if>
+            <!--tableDesc-->
+            <if test="queryForm.tableDesc != null and queryForm.tableDesc != ''">
+                AND INSTR(data_db_count.table_desc,#{queryForm.tableDesc})
+            </if>
+            <!--数据库Schema-->
+            <if test="queryForm.dbSchema != null">
+                AND data_db_count.db_schema = #{queryForm.dbSchema}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

@@ -112,17 +112,17 @@
     {
       title: '代码配置',
       dataIndex: 'configTime',
-      width: 150,
+      width: 180,
     },
     {
       title: '表创建时间',
       dataIndex: 'createTime',
-      width: 150,
+      width: 180,
     },
     {
       title: '表修改时间',
       dataIndex: 'updateTime',
-      width: 150,
+      width: 180,
     },
 
     {

@@ -1,20 +1,20 @@
 spring:
   # 数据库连接信息
   datasource:
-    url: jdbc:p6spy:mysql://127.0.0.1:3306/smart_admin?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://10.10.91.158:3306/smart?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     username: root
     password: root
-    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-    initial-size: 2
-    min-idle: 2
-    max-active: 10
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initial-size: 10
+    min-idle: 10
+    max-active: 100
     max-wait: 60000
     time-between-eviction-runs-millis: 60000
     min-evictable-idle-time-millis: 300000
     filters: stat
     druid:
       username: druid
-      password: 1024
+      password: 1024lab
       login:
         enabled: false
       method:
@@ -95,7 +95,7 @@ file:
   storage:
     mode: local
     local:
-      upload-path: /home/smart_admin_v3/upload/   #文件上传目录
+      upload-path: /Users/xiang/xiang/study/myproject/Blog-Project/smart-admin/smart-admin-api-java17-springboot3/upload/   #文件上传目录
       url-prefix:
     cloud:
       region: oss-cn-hangzhou

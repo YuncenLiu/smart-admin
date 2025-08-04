@@ -38,7 +38,7 @@ export default {
   // 服务端渲染
   server: {
     host: '0.0.0.0',
-    port: 8081,
+    port: 8781,
   },
   plugins: [vue()],
   optimizeDeps: {
