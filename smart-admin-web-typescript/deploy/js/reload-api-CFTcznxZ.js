@@ -1,1 +1,0 @@
-import{p as r,b as e}from"./index-CBkxY9s9.js";const o={queryList:()=>e("/support/reload/query"),queryReloadResult:r=>e(`/support/reload/result/${r}`),reload:e=>r("/support/reload/update",e)};export{o as r};

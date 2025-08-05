@@ -12,7 +12,7 @@ export const smartSentry = {
     /**
      * sentry 主动上报
      */
-    captureError: (error) => {
+    captureError: (error:any) => {
         if (error.config && error.data && error && error.headers && error.request && error.status) {
             return;
         }

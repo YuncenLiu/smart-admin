@@ -9,7 +9,8 @@
  */
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
-import customVariables from '/@/theme/custom-variables';
+// import customVariables from '/@/theme/custom-variables';
+import customVariables from './src/theme/custom-variables';
 
 const pathResolve = (dir) => {
   return resolve(__dirname, '.', dir);

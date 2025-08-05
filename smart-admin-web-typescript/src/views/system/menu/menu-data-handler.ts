@@ -17,7 +17,7 @@ import _ from 'lodash';
  * @param {*} queryForm
  * @returns
  */
-export const filterMenuByQueryForm = (menuList, queryForm) => {
+export const filterMenuByQueryForm = (menuList:any, queryForm:any) => {
   if (!menuList || menuList.length === 0) {
     return [];
   }
@@ -34,7 +34,7 @@ export const filterMenuByQueryForm = (menuList, queryForm) => {
 /**
  * 构建菜单表格树形数据
  */
-export const buildMenuTableTree = (menuList) => {
+export const buildMenuTableTree = (menuList:any) => {
   let topMenuList = [];
   const menuIdSet = new Set();
   for (const menu of menuList) {
@@ -58,9 +58,9 @@ export const buildMenuTableTree = (menuList) => {
  * @param {*} menuList
  * @param {*} parentArray
  */
-function recursiveMenuTree(menuList, parentArray) {
+function recursiveMenuTree(menuList:any, parentArray:any) {
   for (const parent of parentArray) {
-    const children = menuList.filter((e) => e.parentId === parent.menuId);
+    const children = menuList.filter((e:any) => e.parentId === parent.menuId);
     if (children.length > 0) {
       parent.children = children;
       recursiveMenuTree(menuList, parent.children);
@@ -74,7 +74,7 @@ function recursiveMenuTree(menuList, parentArray) {
  * @param {*} queryForm
  * @returns
  */
-function isMenuExistMenuFlag(menu, queryForm) {
+function isMenuExistMenuFlag(menu:any, queryForm:any) {
   let frameFlagCondition = false;
   if (!_.isNil(queryForm.frameFlag)) {
     frameFlagCondition = !_.isNil(menu.frameFlag) && menu.frameFlag === (queryForm.frameFlag === 1);
@@ -112,7 +112,7 @@ function isMenuExistMenuFlag(menu, queryForm) {
  * @param {*} menuType
  * @returns
  */
-function isMenuExistMenuType(menu, menuType) {
+function isMenuExistMenuType(menu:any, menuType:any) {
   if (!menuType) {
     return true;
   }
@@ -126,7 +126,7 @@ function isMenuExistMenuType(menu, menuType) {
 /**
  * 过滤关键字
  */
-function isMenuExistKeywords(menu, keywords) {
+function isMenuExistKeywords(menu:any, keywords:any) {
   if (!keywords) {
     return true;
   }

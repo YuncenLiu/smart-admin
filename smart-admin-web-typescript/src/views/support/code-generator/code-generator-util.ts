@@ -32,7 +32,7 @@ export const JavaTypeList = [
   'LocalDateTime', //
 ];
 
-export function getJavaType(dataType) {
+export function getJavaType(dataType:any) {
   return JavaTypeMap.get(dataType);
 }
 
@@ -64,7 +64,7 @@ export const JsTypeList = [
   'Date', //
 ];
 
-export function getJsType(dataType) {
+export function getJsType(dataType:any) {
   return JsTypeMap.get(dataType);
 }
 
@@ -90,7 +90,7 @@ FrontComponentMap.set('blob', 'FileUpload');
 FrontComponentMap.set('date', 'Date');
 FrontComponentMap.set('datetime', 'DateTime');
 
-export function getFrontComponent(dataType) {
+export function getFrontComponent(dataType:any) {
   return FrontComponentMap.get(dataType);
 }
 
@@ -138,14 +138,14 @@ export const JAVA_FILE_LIST = [
 
 // -------------------------------- 枚举enum --------------------------------
 
-export function convertJavaEnumName(moduleName, columnName) {
+export function convertJavaEnumName(moduleName:any, columnName:any) {
   return moduleName + convertUpperCamel(columnName) + 'Enum';
 }
 
 /**
  * 检测是否有枚举
  */
-export function checkExistEnum(comment) {
+export function checkExistEnum(comment:any) {
   if (!comment) {
     return false;
   }

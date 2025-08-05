@@ -8,11 +8,11 @@
  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
  */
 
-export const localSave = (key, value) => {
+export const localSave = (key:any, value:any) => {
   localStorage.setItem(key, value);
 };
 
-export const localRead = (key) => {
+export const localRead = (key:any) => {
   return localStorage.getItem(key) || '';
 };
 
@@ -20,6 +20,6 @@ export const localClear = () => {
   localStorage.clear();
 };
 
-export const localRemove = (key) => {
+export const localRemove = (key:any) => {
   localStorage.removeItem(key);
 };

@@ -9,7 +9,7 @@
 
 import { useAppConfigStore } from '../store/modules/system/app-config';
 
-export function calcTableHeight(heightRef, removeRefArray, extraRemoveHeight) {
+export function calcTableHeight(heightRef:any, removeRefArray:any, extraRemoveHeight:any) {
   let removeHeight = 0;
   if (removeRefArray && removeRefArray.length > 0) {
     for (const item of removeRefArray) {
@@ -26,5 +26,11 @@ export function calcTableHeight(heightRef, removeRefArray, extraRemoveHeight) {
   }
 
   removeHeight = removeHeight + extraRemoveHeight + due;
-  heightRef.value = document.querySelector('#smartAdminLayoutContent').offsetHeight - removeHeight;
+
+  const layoutContent = document.querySelector('#smartAdminLayoutContent');
+  if (layoutContent) {
+    heightRef.value = (layoutContent as HTMLElement).offsetHeight - removeHeight;
+  } else {
+    heightRef.value = 0; // 或者设置一个默认高度
+  }
 }

@@ -30,8 +30,8 @@ import 'ant-design-vue/dist/reset.css';
 import '/@/theme/index.less';
 import { localRead } from '/@/utils/local-util.js';
 import LocalStorageKeyConst from '/@/constants/local-storage-key-const.js';
-import { Table } from 'ant-design-vue';
-import { useAppConfigStore } from '/@/store/modules/system/app-config';
+// import { Table } from 'ant-design-vue';
+// import { useAppConfigStore } from '/@/store/modules/system/app-config';
 import '/@/utils/ployfill';
 import { useDictStore } from '/@/store/modules/system/dict.js';
 import { dictApi } from '/@/api/support/dict-api.js';
@@ -58,14 +58,14 @@ async function getLoginInfo() {
     const res = await loginApi.getLoginInfo();
     const dictRes = await dictApi.getAllDictData();
     //构建系统的路由
-    let menuRouterList = res.data.menuList.filter((e) => e.path || e.frameUrl);
+    let menuRouterList = res.data.menuList.filter((e:any) => e.path || e.frameUrl);
     buildRoutes(menuRouterList);
     initVue();
     // 初始化数据字典
     useDictStore().initData(dictRes.data);
     //更新用户信息到pinia
     useUserStore().setUserLoginInfo(res.data);
-  } catch (e) {
+  } catch (e:any) {
     message.error(e.data ? e.data.msg : e.message);
     smartSentry.captureError(e);
     initVue();
@@ -79,7 +79,7 @@ async function initVue() {
     .use(store)
     .use(i18n)
     .use(Antd)
-    .use(smartEnumPlugin, constantsInfo)
+    .use(smartEnumPlugin as any, constantsInfo as any)
     .use(privilegePlugin)
     .use(dictPlugin)
     .use(JsonViewer);
@@ -90,9 +90,9 @@ async function initVue() {
     },
   });
   // 注册图标组件
-  Object.keys(antIcons).forEach((key) => {
-    app.component(key, antIcons[key]);
-  });
+  for (const [key, component] of Object.entries(antIcons)) {
+    app.component(key, component);
+  }
   //全局
   app.config.globalProperties.$antIcons = antIcons;
   app.config.globalProperties.$lodash = lodash;

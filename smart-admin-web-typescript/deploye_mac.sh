@@ -1,6 +1,6 @@
 #!/bin/bash
 
- /Users/xiang/.nvm/versions/node/v20.19.1/bin/npm run build:prod
+/Users/xiang/.nvm/versions/node/v20.19.1/bin/npm run build:prod
 
 # 定义要修改的文件路径
 FILE="/Users/xiang/xiang/study/myproject/Blog-Project/smart-admin/smart-admin-web-typescript/dist/index.html"
