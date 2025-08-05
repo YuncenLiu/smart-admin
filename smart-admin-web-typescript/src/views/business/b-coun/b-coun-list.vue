@@ -164,7 +164,7 @@ const queryFormState = {
   tableDesc: undefined, //tableDesc
   dbSchema: undefined, //数据库Schema
   pageNum: 1,
-  pageSize: 10,
+  pageSize: 100,
 };
 // 查询表单form
 const queryForm = reactive({ ...queryFormState });

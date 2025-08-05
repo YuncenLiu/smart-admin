@@ -1,1 +1,0 @@
-import{b as e,p as t}from"./index-CLIAHr-H.js";const a={queryAllDepartment:()=>e("/department/listAll"),queryDepartmentTree:()=>e("/department/treeList"),addDepartment:e=>t("/department/add",e),updateDepartment:e=>t("/department/update",e),deleteDepartment:t=>e(`/department/delete/${t}`)};export{a as d};
