@@ -29,10 +29,9 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 数据源配置
@@ -97,6 +96,36 @@ public class DataSourceConfig {
 
     @jakarta.annotation.Resource
     private DataScopePlugin dataScopePlugin;
+
+    /**
+     * 暴露数据库连接信息
+     * 其他 Service 可通过注入获取:
+     * \@Resource(name = "databaseInfo")
+     * private Map<String, String> databaseInfo;
+     */
+    @Bean(name = "databaseInfo")
+    public Map<String, String> databaseConnectionInfo() {
+        // 解析 JDBC URL 获取 IP 和端口
+        String[] urlParts = parseJdbcUrl(url);
+
+        // 创建数据库信息 Map
+        Map<String, String> infoMap = new HashMap<>(16);
+        infoMap.put("driver", driver);
+        infoMap.put("url", url);
+        infoMap.put("ip", urlParts[0]);
+        infoMap.put("port", urlParts[1]);
+        infoMap.put("username", username);
+        infoMap.put("initialSize", String.valueOf(initialSize));
+        infoMap.put("maxActive", String.valueOf(maxActive));
+
+        // 添加 Druid 监控信息（可选）
+        if (druidLoginEnable) {
+            infoMap.put("druidUsername", druidUserName);
+            infoMap.put("druidEndpoint", "/druid");
+        }
+
+        return Collections.unmodifiableMap(infoMap); // 返回不可修改的 Map
+    }
 
     @Bean
     @Primary
@@ -196,6 +225,26 @@ public class DataSourceConfig {
         pointcutAdvisor.setPointcut(jdkRegexpMethodPointcut());
         pointcutAdvisor.setAdvice(new DruidStatInterceptor());
         return pointcutAdvisor;
+    }
+
+
+    public static String[] parseJdbcUrl(String jdbcUrl) {
+        // 正则表达式匹配格式: jdbc:mysql://[ip]:[port]/[dbname]
+        Pattern pattern = Pattern.compile(
+                "jdbc:mysql://([^/:]+):(\\d+)/",
+                Pattern.CASE_INSENSITIVE
+        );
+
+        Matcher matcher = pattern.matcher(jdbcUrl);
+
+        if (matcher.find()) {
+            return new String[]{
+                    matcher.group(1), // IP地址
+                    matcher.group(2)  // 端口号
+            };
+        } else {
+            throw new IllegalArgumentException("无效的JDBC URL格式: " + jdbcUrl);
+        }
     }
 
 }

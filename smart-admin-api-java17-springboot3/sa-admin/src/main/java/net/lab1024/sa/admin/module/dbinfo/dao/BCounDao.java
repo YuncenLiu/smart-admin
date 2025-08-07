@@ -7,7 +7,10 @@ import net.lab1024.sa.admin.module.dbinfo.domain.vo.BCounVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.mapping.StatementType;
 import org.springframework.stereotype.Component;
 
 /**
@@ -30,4 +33,18 @@ public interface BCounDao extends BaseMapper<BCounEntity> {
      */
     List<BCounVO> queryPage(Page page, @Param("queryForm") BCounQueryForm queryForm);
 
+    /**
+     * 调用存储过程
+     *
+     * @param host 数据库IP端口
+     * @param schema 数据库实例名称
+     * @param username 用户
+     */
+    @Select("{CALL scan_database_tables(#{host}, #{schema}, #{username})}")
+    @Options(statementType = StatementType.CALLABLE)
+    void callScanDatabaseTables(
+            @Param("host") String host,
+            @Param("schema") String schema,
+            @Param("username") String username
+    );
 }

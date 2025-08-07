@@ -1,6 +1,7 @@
 package net.lab1024.sa.admin.module.dbinfo.service;
 
 import java.util.List;
+import java.util.Map;
 
 import lombok.extern.slf4j.Slf4j;
 import net.lab1024.sa.admin.module.dbinfo.dao.BCounDao;
@@ -12,6 +13,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.Resource;
+
+import javax.sql.DataSource;
 
 /**
  * 数据库表信息 Service
@@ -27,6 +30,8 @@ public class BCounService {
 
     @Resource
     private BCounDao bCounDao;
+    @Resource(name = "databaseInfo")
+    private Map<String, String> databaseInfo;
 
     /**
      * 分页查询
@@ -46,6 +51,8 @@ public class BCounService {
      * @return: java.lang.Boolean
      **/
     public Boolean loadData() {
+        String dbInfo = databaseInfo.get("ip") + ":" + databaseInfo.get("port");
+        bCounDao.callScanDatabaseTables(dbInfo, "xiang", databaseInfo.get("username"));
         return Boolean.TRUE;
     }
 }
